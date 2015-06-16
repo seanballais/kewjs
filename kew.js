@@ -38,6 +38,40 @@
 			for (var i = 0; i < this.length; i++) {
 				this.elements[i].parentElement.removeChild(this.elements[i]);
 			}
+		},
+		add: function(htmlString) {
+			if (htmlString == "") {
+				throw new Error("Parameter in .add must not be an empty string.");
+			}
+
+			for (var i = 0; i < this.length; i++) {
+				var tag, element, text, nodeState;
+
+				var elemQueried = this.elements[i];
+
+				// Parse through the string to get the opening tag
+                for (var i = 0; i < htmlString.length; i++) {
+                	var character = htmlString[i];
+
+                	if (character == '>') {
+                		tag = htmlString.substr(0, i + 1);
+                		break;
+                	}
+                }
+
+                element = tag.slice(1, tag.length - 1);
+                if (tag.length == 3) { // If tag is like <i>
+                	element = tag[1];
+                }
+
+                text = htmlString.slice(tag.length, htmlString.length - (tag.length + 1));
+
+                var node = document.createElement(element);
+                var textNode = document.createTextNode(text);
+
+                node.appendChild(textNode);
+                elemQueried.appendChild(node);
+            }
 		}
 	}
 

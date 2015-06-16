@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>KewJS .add() Test Page</title>
+        <script type="text/javascript" src="../kew.js"></script>
+    </head>
+    <body>
+        <h1>KewJS .add() Test Page</h1>
+        <ul id="myList">
+            <li>Sean is handsome. - Sean</li>
+        </ul>
+
+        <button onclick="addChild()">Add child</button>
+        <script>
+            function addChild() {
+                $kew('#myList').add("<li>As if! - Francis</li>");
+            }
+        </script>
+    </body>
+</html>
