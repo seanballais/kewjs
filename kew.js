@@ -44,10 +44,8 @@
 				throw new Error("Parameter in .add must not be an empty string.");
 			}
 
-			for (var i = 0; i < this.length; i++) {
+			this.each(function(el) {
 				var tag, element, text, nodeState;
-
-				var elemQueried = this.elements[i];
 
 				// Parse through the string to get the opening tag
                 for (var i = 0; i < htmlString.length; i++) {
@@ -70,8 +68,8 @@
                 var textNode = document.createTextNode(text);
 
                 node.appendChild(textNode);
-                elemQueried.appendChild(node);
-            }
+                el.appendChild(node);
+            });
 		}
 	}
 
