@@ -60,3 +60,9 @@ $kew('#foo').class('bar');
 // Removes selected elements from the document
 $kew('#foo').remove();
 ```
+
+###### add()
+```javascript
+// Add a child element to a specified parent element
+$kew('#foo').add('<p>bar</p>');
+```
